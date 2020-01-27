@@ -1,6 +1,6 @@
 prompt --application/set_environment
 set define off verify off feedback off
-whenever sqlerror exit sql.sqlcode rollback
+whenever sqor exit sql.sqlcode rollback
 --------------------------------------------------------------------------------
 --
 -- ORACLE Application Express (APEX) export file
@@ -28,7 +28,7 @@ prompt APPLICATION 100 - Sample Application
 -- Application Export:
 --   Application:     100
 --   Name:            Sample Application
---   Date and Time:   12:35 Monday January 27, 2020
+--   Date and Time:   12:49 Monday January 27, 2020
 --   Exported By:     ADMIN
 --   Flashback:       0
 --   Export Type:     Page Export
@@ -95,8 +95,8 @@ wwv_flow_api.create_page(
 '<p>',
 'The <strong>My Quota</strong> region is a Flash chart type called  Dial Chart.  It is dynamically rendered based on a SQL Statement each time the page is viewed.  <strong>My Top Orders</strong> displays the top five orders for the currently signed in'
 ||' user, based on order total.  The <strong>Tasks</strong> region is an example of using a List to provide easy navigation to common tasks.'))
-,p_last_updated_by=>'DEMO'
-,p_last_upd_yyyymmddhh24miss=>'20100602110036'
+,p_last_updated_by=>'ADMIN'
+,p_last_upd_yyyymmddhh24miss=>'20200127124512'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(829227880382692670)
@@ -375,7 +375,6 @@ wwv_flow_api.create_report_region(
 ,p_component_template_options=>'#DEFAULT#'
 ,p_region_attributes=>'style="width:49%; float:left; clear: none;"'
 ,p_new_grid_row=>false
-,p_new_grid_column=>false
 ,p_display_column=>1
 ,p_display_point=>'BODY_3'
 ,p_source_type=>'NATIVE_SQL_REPORT'
@@ -387,6 +386,7 @@ wwv_flow_api.create_report_region(
 'group by o.order_timestamp',
 'order by 2 desc',
 ''))
+,p_display_condition_type=>'NEVER'
 ,p_ajax_enabled=>'Y'
 ,p_fixed_header=>'NONE'
 ,p_query_row_template=>wwv_flow_api.id(833695049512191821)
